@@ -1,0 +1,7 @@
+function dops() { docker ps ; }
+function doba() { docker exec -it "$1" bash; }
+function dosh() { docker exec -it "$1" sh; }
+function doex() { docker exec -it "$@"; }
+function dolo() { docker logs --tail=10 -f "$1" ; }
+function dost() { docker stats "$1" ; }
+function doco() { docker-compose "$@" ; }
