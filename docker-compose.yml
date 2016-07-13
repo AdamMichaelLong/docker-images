@@ -1,0 +1,35 @@
+
+################### WEB ###################
+
+redis:
+  extends:
+    file: ./common.yml
+    service: redis
+
+fpm:
+  extends:
+    file: ./common.yml
+    service: fpm
+
+nginx:
+  extends:
+    file: ./common.yml
+    service: nginx
+
+varnish:
+  extends:
+    file: ./common.yml
+    service: varnish
+
+
+################### DB ###################
+
+#solr:
+#  extends:
+#    file: ./common.yml
+#    service: solr
+
+#postgres:
+#  extends:
+#    file: ./common.yml
+#    service: postgres
