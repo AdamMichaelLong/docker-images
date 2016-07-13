@@ -22,7 +22,7 @@ fpm:
     - "./etc/php5:/etc/php5"
     - "./var/log/php:/var/log/php"
     - "./var/log/newrelic:/var/log/newrelic"
-    - "./var/www:/srv/www"
+    - "../www:/srv/www"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/files:/srv/www/html/sites/www.humanitarianresponse.info/files"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/private:/srv/www/html/sites/www.humanitarianresponse.info/private"
   environment:
@@ -42,7 +42,7 @@ nginx:
     - "./etc/nginx:/etc/nginx"
     - "./var/lib/nginx:/var/lib/nginx"
     - "./var/log/nginx:/var/log/nginx"
-    - "./var/www:/srv/www"
+    - "../www:/srv/www"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/files:/srv/www/html/sites/www.humanitarianresponse.info/files"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/private:/srv/www/html/sites/www.humanitarianresponse.info/private"
   environment:
