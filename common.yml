@@ -22,13 +22,17 @@ fpm:
     - "./etc/php5:/etc/php5"
     - "./var/log/php:/var/log/php"
     - "./var/log/newrelic:/var/log/newrelic"
-    - "../www:/srv/www"
+    # - "../www:/srv/www"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/srv/web01/www/html:/srv/www/html"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/files:/srv/www/html/sites/www.humanitarianresponse.info/files"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/private:/srv/www/html/sites/www.humanitarianresponse.info/private"
+  environment:
     - TERM=xterm
     - ENVIRONMENT=prod
   extra_hosts:
+    # The failover IP for postgres.
+    # this should be changed to the corresponding at some point to the assigned internal ip for HR.info (10.5.202.31)
+    - "pgdb-rw: 10.5.68.152"
     # yes, our solr is on db2
     - "db2: 10.5.202.31"
 
@@ -54,8 +58,10 @@ varnish:
   container_name: hrinfo-varnish
   hostname: hrinfo-varnish
   ports:
-    # wb01
-    - "10.5.68.148:8189:80"
+    # wb01 LIVE
+    - "10.5.68.148:8180:80"
+    # wb01 TEST
+    # - "10.5.68.148:8189:80"
     # wb02
     #- "10.5.68.149:8180:80"
   volumes:
