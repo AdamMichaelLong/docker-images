@@ -26,6 +26,7 @@ fpm:
     - "/mnt/glusterfs3/www.humanitarianresponse.info/srv/web01/www/html:/srv/www/html"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/files:/srv/www/html/sites/www.humanitarianresponse.info/files"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/private:/srv/www/html/sites/www.humanitarianresponse.info/private"
+  environment:
     - TERM=xterm
     - ENVIRONMENT=prod
   extra_hosts:
