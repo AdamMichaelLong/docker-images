@@ -29,6 +29,8 @@ fpm:
     - TERM=xterm
     - ENVIRONMENT=prod
   extra_hosts:
+    # The failover IP for postgres.
+    - "pgdb-rw: 10.5.68.152"
     # yes, our solr is on db2
     - "db2: 10.5.202.31"
 
