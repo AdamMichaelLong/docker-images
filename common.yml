@@ -30,10 +30,10 @@ fpm:
     - TERM=xterm
     - ENVIRONMENT=prod
   extra_hosts:
-    # The failover IP for postgres.
-    # this should be changed to the corresponding at some point to the assigned internal ip for HR.info (10.5.202.31)
-    - "pgdb-rw: 10.5.68.152"
-    # yes, our solr is on db2
+    # The main (not failover) IP for postgres.
+    - "pgdb-rw: 10.5.201.31"
+    # solr - we use version 3 on db02 !!!
+    #- "db1: 10.5.201.31"
     - "db2: 10.5.202.31"
 
 nginx:
