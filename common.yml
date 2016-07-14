@@ -22,7 +22,7 @@ fpm:
     - "./etc/php5:/etc/php5"
     - "./var/log/php:/var/log/php"
     - "./var/log/newrelic:/var/log/newrelic"
-    - "../www:/srv/www"
+    # - "../www:/srv/www"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/srv/web01/www/html:/srv/www/html"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/files:/srv/www/html/sites/www.humanitarianresponse.info/files"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/private:/srv/www/html/sites/www.humanitarianresponse.info/private"
