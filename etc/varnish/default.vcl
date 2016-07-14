@@ -17,7 +17,7 @@ backend default {
 
 # Backend for the piwik container.
 backend stats {
-    .host = "127.0.0.1";
+    .host = "10.5.68.148";
     .port = "8093";
     .connect_timeout = 3600s;
     .first_byte_timeout = 3600s;
