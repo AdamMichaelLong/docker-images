@@ -6,7 +6,7 @@ redis:
   hostname: hrinfo-redis
   container_name: hrinfo-redis
   ports:
-    - "10.5.101.31:6379:6379"
+    - "10.5.102.31:6379:6379"
   volumes:
     - "./var/log/redis:/var/log/redis"
 
@@ -17,13 +17,13 @@ fpm:
   ports:
     # can't listen to the default port 9000
     # as RW's fpm is listening on all host interfaces
-    - "10.5.101.31:9300:9000"
+    - "10.5.102.31:9300:9000"
   volumes:
     - "./etc/php5:/etc/php5"
     - "./var/log/php:/var/log/php"
     - "./var/log/newrelic:/var/log/newrelic"
     # - "../www:/srv/www"
-    - "/mnt/glusterfs3/www.humanitarianresponse.info/srv/web01/www/html:/srv/www/html"
+    - "/mnt/glusterfs3/www.humanitarianresponse.info/srv/web02/www/html:/srv/www/html"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/files:/srv/www/html/sites/www.humanitarianresponse.info/files"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/private:/srv/www/html/sites/www.humanitarianresponse.info/private"
   environment:
@@ -42,12 +42,12 @@ nginx:
   hostname: hrinfo-nginx
   container_name: hrinfo-nginx
   ports:
-    - "10.5.101.31:80:80"
+    - "10.5.102.31:80:80"
   volumes:
     - "./etc/nginx:/etc/nginx"
     - "./var/lib/nginx:/var/lib/nginx"
     - "./var/log/nginx:/var/log/nginx"
-    - "/mnt/glusterfs3/www.humanitarianresponse.info/srv/web01/www/html:/srv/www/html"
+    - "/mnt/glusterfs3/www.humanitarianresponse.info/srv/web02/www/html:/srv/www/html"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/files:/srv/www/html/sites/www.humanitarianresponse.info/files"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/private:/srv/www/html/sites/www.humanitarianresponse.info/private"
   environment:
@@ -59,12 +59,10 @@ varnish:
   container_name: hrinfo-varnish
   hostname: hrinfo-varnish
   ports:
-    # wb01 LIVE
-    - "10.5.68.148:8180:80"
     # wb01 TEST
     # - "10.5.68.148:8189:80"
-    # wb02
-    #- "10.5.68.149:8180:80"
+    # wb02 LIVE
+    - "10.5.68.149:8180:80"
   volumes:
     - "./etc/varnish:/etc/varnish"
   environment:
