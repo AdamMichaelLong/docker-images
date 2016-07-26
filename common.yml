@@ -8,7 +8,7 @@ redis:
   ports:
     - "10.5.102.31:6379:6379"
   volumes:
-    - "./var/log/redis:/var/log/redis"
+    - "/srv/humanitarianresponse.info/var/log/redis:/var/log/redis"
 
 fpm:
   image: unocha/alpine-php-fpm-drupal7-hrinfo:3.4-newrelic
@@ -20,9 +20,9 @@ fpm:
     - "10.5.102.31:9300:9000"
   volumes:
     - "./etc/php5:/etc/php5"
-    - "./var/log/php:/var/log/php"
-    - "./var/log/newrelic:/var/log/newrelic"
-    # - "../www:/srv/www"
+    - "/srv/humanitarianresponse.info/var/log/php:/var/log/php"
+    - "/srv/humanitarianresponse.info/var/log/newrelic:/var/log/newrelic"
+    # - "/srv/humanitarianresponse.info/www:/srv/www"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/srv/web02/www/html:/srv/www/html"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/files:/srv/www/html/sites/www.humanitarianresponse.info/files"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/private:/srv/www/html/sites/www.humanitarianresponse.info/private"
@@ -45,8 +45,8 @@ nginx:
     - "10.5.102.31:80:80"
   volumes:
     - "./etc/nginx:/etc/nginx"
-    - "./var/lib/nginx:/var/lib/nginx"
-    - "./var/log/nginx:/var/log/nginx"
+    - "/srv/humanitarianresponse.info/var/lib/nginx:/var/lib/nginx"
+    - "/srv/humanitarianresponse.info/var/log/nginx:/var/log/nginx"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/srv/web02/www/html:/srv/www/html"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/files:/srv/www/html/sites/www.humanitarianresponse.info/files"
     - "/mnt/glusterfs3/www.humanitarianresponse.info/private:/srv/www/html/sites/www.humanitarianresponse.info/private"
@@ -65,6 +65,7 @@ varnish:
     - "10.5.68.149:8180:80"
   volumes:
     - "./etc/varnish:/etc/varnish"
+    - "/srv/humanitarianresponse.info/vol/log/varnish:/vol/log/varnish"
   environment:
     - STORAGE_BACKEND=malloc,3G
 
