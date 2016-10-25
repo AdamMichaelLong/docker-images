@@ -13,6 +13,11 @@ RUN mkdir -p /etc/services.d/nginx /srv/www/html /var/log/nginx /var/cache/nginx
 
 EXPOSE 80 443
 
+HEALTHCHECK \
+    --interval=30s \
+    --timeout=5s \
+    CMD curl 127.0.0.1
+
 VOLUME ["/var/cache/nginx", "/var/log/nginx", "/srv/www/html"]
 
 # Volumes
